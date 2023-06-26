@@ -50,9 +50,11 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-        <!-- oracle docker does not work on M1/2 -->
-<!--      <artifactId>quarkus-jdbc-oracle</artifactId>-->
       <artifactId>quarkus-jdbc-postgresql</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
