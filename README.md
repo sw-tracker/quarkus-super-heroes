@@ -6,7 +6,11 @@ https://hollycummins.com/quarkus-workshops/
 
 ## REST Villains
 
-./mvnw quarkus:dev
+`./mvnw quarkus:dev`
+
+`./mvnw package`
+
+`./mvnw package -Pnative`
 
 - http://localhost:8084/
 - GET http://localhost:8084/api/villains
