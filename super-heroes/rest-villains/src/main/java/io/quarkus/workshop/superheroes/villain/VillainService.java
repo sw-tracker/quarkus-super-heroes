@@ -14,6 +14,8 @@ import static jakarta.transaction.Transactional.TxType.SUPPORTS;
 @Transactional(REQUIRED)
 public class VillainService {
 
+    @ConfigProperty(name = "level.multiplier", defaultValue="1.0") double levelMultiplier;
+
     @Transactional(SUPPORTS)
     public List<Villain> findAllVillains() {
         return Villain.listAll();
@@ -33,11 +35,6 @@ public class VillainService {
         return randomVillain;
     }
 
-    public Villain persistVillain(@Valid Villain villain) {
-        villain.persist();
-        return villain;
-    }
-
     public Villain updateVillain(@Valid Villain villain) {
         Villain entity = Villain.findById(villain.id);
         entity.name = villain.name;
@@ -51,5 +48,11 @@ public class VillainService {
     public void deleteVillain(Long id) {
         Villain villain = Villain.findById(id);
         villain.delete();
+    }
+
+    public Villain persistVillain(@Valid Villain villain) {
+        villain.level = (int) Math.round(villain.level * levelMultiplier);
+        villain.persist();
+        return villain;
     }
 }
